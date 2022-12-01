@@ -14,30 +14,29 @@ let obj = {
   }
 }
 
-let blankCrewMembers = Object.entries(obj);
-let crewMembers = [];
-let subCrewMembers = []
+let entries = Object.entries(obj);
+let arr = [];
+let subArr = []
+let desiredThing = "New value"; // Every value will be replaced with this
 
-let person = "NewCrewMember"; // Represents CrewMember class instantiation
-
-blankCrewMembers.forEach(crewMember => {
-  // console.log(crewMember[1]);
-  let crewMemberRole = crewMember[0];
-  let crewMemberName = crewMember[1];
-  let isString = typeof crewMemberName === "string";
+entries.forEach(entry => {
+  let key = entry[0];
+  let value = entry[1]; // In the scope of this repl, this is either a string or an object
+  let isString = typeof value === "string";
   if (isString) {
-    crewMembers.push([crewMemberRole, person]);
+    arr.push([key, desiredThing]);
   } else {
-    let blankSubCrewMembers = Object.entries(crewMemberName);
-    blankSubCrewMembers.forEach(subCrewMember => {
-      let subCrewMemberRole = subCrewMember[0];
-      subCrewMembers.push([subCrewMemberRole, person]);
+    let subEntries = Object.entries(value);
+    subEntries.forEach(subEntry => {
+      let subKey = subEntry[0];
+      subArr.push([subKey, desiredThing]);
     })
-    crewMembers.push([crewMemberRole, Object.fromEntries(subCrewMembers)])
+    arr.push([key, Object.fromEntries(subArr)])
   }
 })
 
-newObj = Object.fromEntries(crewMembers)
+newObj = Object.fromEntries(arr)
+
 
 console.log(obj);
 console.log(newObj)
