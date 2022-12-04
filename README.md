@@ -1,4 +1,4 @@
-# UpdateObjectValues
+# updateObjectValues
 
 Input is a two-level nested object with values of all keys at all levels set to "" (a blank string). Output is another object, same level of nesting, with all values at all levels set to another string (or to a class instantiation, etc.) 
 
